@@ -69,7 +69,7 @@ module OmniAuth
       extra do
         {
           'accounts' => raw_info.parsed['accounts'],
-          'raw_info' => raw_info.response
+          'raw_info' => raw_info.parsed
         }
       end
 
