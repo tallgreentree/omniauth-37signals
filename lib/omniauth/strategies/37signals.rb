@@ -7,9 +7,7 @@ module OmniAuth
       option :client_options, {
         :site => 'https://launchpad.37signals.com',
         :authorize_url => '/authorization/new',
-        :token_url => '/authorization/token',
-        # :header_format => 'Token %s',
-        # :param_name => 'Authorization',
+        :token_url => '/authorization/token'
       }
 
       option :authorize_params, {
@@ -22,27 +20,6 @@ module OmniAuth
       def request_phase
         super
       end
-
-      # def callback_phase
-      #   if request.params['error'] || request.params['error_reason']
-      #     raise CallbackError.new(request.params['error'], request.params['error_description'] || request.params['error_reason'], request.params['error_uri'])
-      #   end
-
-      #   self.access_token = build_access_token
-      #   self.access_token = client.auth_code.refresh_token(access_token.refresh_token) if access_token.expired?
-
-      # rescue ::OAuth2::Error, CallbackError => e
-      #   fail!(e.response.body, e)
-      # rescue ::MultiJson::DecodeError => e
-      #   fail!(:invalid_response, e)
-      # rescue ::Timeout::Error, ::Errno::ETIMEDOUT => e
-      #   fail!(:timeout, e)
-      # end
-
-      # def build_access_token
-      #   verifier = request.params['code']
-      #   client.get_token({:code => verifier, :client_id => client.id, :client_secret => client.secret, :type => 'web_server', :redirect_uri => "http://localhost:4567/auth/37signals/callback"})
-      # end
 
       def build_access_token
         token_params = {
