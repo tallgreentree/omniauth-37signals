@@ -4,9 +4,9 @@ This gem contains the unofficial 37signals strategy for OmniAuth.
 
 ## Basic Usage
 
-  use OmniAuth::Builder do
-    provider "37signals", ENV['37SIGNALS_CLIENT_ID'], ENV['37SIGNALS_SECRET']
-  end
+    use OmniAuth::Builder do
+      provider "37signals", ENV['37SIGNALS_CLIENT_ID'], ENV['37SIGNALS_SECRET']
+    end
 
 ## Supported Flows
 
