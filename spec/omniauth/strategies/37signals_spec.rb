@@ -3,7 +3,9 @@ require 'omniauth-37signals'
 
 describe OmniAuth::Strategies::ThirtySevenSignals do
   subject do
-    OmniAuth::Strategies::ThirtySevenSignals.new(nil, @options || {})
+    strategy = OmniAuth::Strategies::ThirtySevenSignals.new(nil, @options || {})
+    strategy.stub(:session) { {} }
+    strategy
   end
 
   it_should_behave_like 'an oauth2 strategy'
