@@ -7,6 +7,63 @@ This gem contains the unofficial 37signals strategy for OmniAuth.
     use OmniAuth::Builder do
       provider "37signals", ENV['37SIGNALS_CLIENT_ID'], ENV['37SIGNALS_SECRET']
     end
+    
+## Sample OAuth callback information
+
+Once a user has successfully authorized your application you'll get something similar to the following information back within env['omniauth.auth']:
+
+```json
+{
+  "provider": "37signals",
+  "uid": 555,
+  "info": {
+    "email": "user@example.com",
+    "first_name": "John",
+    "last_name": "Smith",
+    "name": "John Smith"
+  },
+  "credentials": {
+    "token": "...",
+    "refresh_token": "...",
+    "expires_at": 1362252189,
+    "expires": true
+  },
+  "extra": {
+    "accounts": [{
+      "name": "Basecamp Project 1",
+      "href": "https://project1.basecamphq.com",
+      "id": 123,
+      "product": "basecamp"
+    }, {
+      "name": "Campfire account",
+      "href": "https://campfire1.campfirenow.com",
+      "id": 456,
+      "product": "campfire"
+    }]
+  },
+  "raw_info": {
+    "accounts": [{
+      "name": "Basecamp Project 1",
+      "href": "https://project1.basecamphq.com",
+      "id": 123,
+      "product": "basecamp"
+    }, { 
+      "name": "Campfire account",
+      "href": "https://campfire1.campfirenow.com",
+      "id": 456,
+      "product": "campfire"
+    }]
+    },
+  "expires_at": "2013-03-02T19:23:09Z",
+  "identity": {
+    "id": 555,
+    "last_name": "Smith",
+    "email_address": "user@example.com",
+    "first_name": "John"
+  }
+}
+```
+
 
 ## Supported Flows
 
