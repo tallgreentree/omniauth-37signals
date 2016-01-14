@@ -21,9 +21,14 @@ module OmniAuth
         super
       end
 
+      def callback_url
+        full_host + script_name + callback_path
+      end
+
       def build_access_token
         token_params = {
           :code => request.params['code'],
+          :state => request.params['state'],
           :redirect_uri => callback_url,
           :client_id => client.id,
           :client_secret => client.secret,
@@ -31,7 +36,7 @@ module OmniAuth
         }
         client.get_token(token_params)
       end
-      
+
       uid { raw_info.parsed['identity']['id'] }
 
       info do
